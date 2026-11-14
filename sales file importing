@@ -1,0 +1,22 @@
+
+!pip -q install ucimlrepo
+
+import pandas as pd
+from ucimlrepo import fetch_ucirepo
+
+# Mengambil dataset resmi UCI Online Retail
+retail = fetch_ucirepo(id=352)
+df = retail.data.features.copy()
+
+print("Ukuran dataset:", df.shape)
+print("\nNama kolom:")
+print(df.columns.tolist())
+
+print("\nLima baris pertama:")
+display(df.head())
+
+print("\nInformasi tipe data:")
+df.info()
+
+print("\nMissing values:")
+display(df.isna().sum().to_frame("missing_values"))
